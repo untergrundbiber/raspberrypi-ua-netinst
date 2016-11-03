@@ -82,6 +82,7 @@
 | Parameter | Default | Options | Description |
 |-------------------|---------|-----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `usbroot` |  |  | Set to 1 to install to first USB disk. |
+| `usbboot` |  |  | Set to 1 to install and boot from first USB disk. This works only with model 3 and higher and implies "usbroot=1" |
 | `rootfstype` | f2fs | `ext4`/  `f2fs`/  `btrfs` | Sets the file system of the root partition. |
 | `boot_volume_label` |  |  | Sets the volume name of the boot partition. The volume name can be up to 11 characters long. The label is used by most OSes (Windows, Mac OSX and Linux) to identify the SD-card on the desktop and can be useful when using multiple SD-cards. |
 | `bootsize` | `+128M` |  | /boot partition size in megabytes, provide it in the form '+<number>M' (without quotes) |
