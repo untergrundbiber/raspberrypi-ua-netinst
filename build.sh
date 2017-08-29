@@ -125,7 +125,7 @@ function create_cpio {
 	mkdir -p rootfs/sbin/
 	mkdir -p rootfs/usr/bin/
 	mkdir -p rootfs/usr/lib/mime/packages/
-	mkdir -p rootfs/usr/lib/openssl-1.0.0/engines/
+	mkdir -p rootfs/usr/lib/openssl-1.0.2/engines/
 	mkdir -p rootfs/usr/lib/{tar,tc}
 	mkdir -p rootfs/usr/sbin/
 	mkdir -p rootfs/usr/share/{dpkg,keyrings,libc-bin}
@@ -213,7 +213,7 @@ function create_cpio {
 	sed -i "s/__DATE__/$(date)/" rootfs/opt/raspberrypi-ua-netinst/install.sh
 
 	# btrfs-tools components
-	cp --preserve=xattr,timestamps tmp/sbin/mkfs.btrfs rootfs/sbin/
+	cp --preserve=xattr,timestamps tmp/bin/mkfs.btrfs rootfs/bin/
 	cp --preserve=xattr,timestamps tmp/usr/lib/*/libbtrfs.so.0 rootfs/lib/
 
 	# busybox components
@@ -294,7 +294,7 @@ function create_cpio {
 	cp --preserve=xattr,timestamps tmp/usr/share/dpkg/abitable rootfs/usr/share/dpkg/
 	cp --preserve=xattr,timestamps tmp/usr/share/dpkg/cputable rootfs/usr/share/dpkg/
 	cp --preserve=xattr,timestamps tmp/usr/share/dpkg/ostable rootfs/usr/share/dpkg/
-	cp --preserve=xattr,timestamps tmp/usr/share/dpkg/triplettable rootfs/usr/share/dpkg/
+	cp --preserve=xattr,timestamps tmp/usr/share/dpkg/tupletable rootfs/usr/share/dpkg/
 	cd rootfs/usr/sbin
 	ln -s ../bin/dpkg-divert dpkg-divert
 	ln -s ../bin/dpkg-statoverride dpkg-statoverride
@@ -338,7 +338,7 @@ function create_cpio {
 
 	# f2fs-tools components
 	cp --preserve=xattr,timestamps tmp/sbin/mkfs.f2fs rootfs/sbin/
-	cp --preserve=xattr,timestamps tmp/lib/*/libf2fs.so.0  rootfs/lib/
+	cp --preserve=xattr,timestamps tmp/lib/*/libf2fs.so.1  rootfs/lib/
 
 	# gpgv components
 	cp --preserve=xattr,timestamps tmp/usr/bin/gpgv rootfs/usr/bin/
@@ -471,7 +471,7 @@ function create_cpio {
 	cp --preserve=xattr,timestamps tmp/etc/gai.conf rootfs/etc/
 	cp --preserve=xattr,timestamps tmp/etc/ld.so.conf rootfs/etc/
 	cp --preserve=xattr,timestamps tmp/sbin/ldconfig rootfs/sbin/
-	cp --preserve=xattr,timestamps tmp/sbin/ldconfig.real rootfs/sbin/
+	#cp --preserve=xattr,timestamps tmp/sbin/ldconfig.real rootfs/sbin/
 	cp --preserve=xattr,timestamps tmp/usr/bin/catchsegv rootfs/usr/bin/
 	cp --preserve=xattr,timestamps tmp/usr/bin/getconf rootfs/usr/bin/
 	cp --preserve=xattr,timestamps tmp/usr/bin/getent rootfs/usr/bin/
@@ -573,21 +573,21 @@ function create_cpio {
 	# libsmartcols1 components
 	cp --preserve=xattr,timestamps tmp/lib/*/libsmartcols.so.1.* rootfs/lib/libsmartcols.so.1
 
-	# libssl1.0.0 components
-	cp --preserve=xattr,timestamps tmp/usr/lib/*/libcrypto.so.1.0.0 rootfs/usr/lib/
-	cp --preserve=xattr,timestamps tmp/usr/lib/*/libssl.so.1.0.0 rootfs/usr/lib/
-	cp --preserve=xattr,timestamps tmp/usr/lib/*/openssl-1.0.0/engines/lib4758cca.so rootfs/usr/lib/openssl-1.0.0/engines/
-	cp --preserve=xattr,timestamps tmp/usr/lib/*/openssl-1.0.0/engines/libaep.so rootfs/usr/lib/openssl-1.0.0/engines/
-	cp --preserve=xattr,timestamps tmp/usr/lib/*/openssl-1.0.0/engines/libatalla.so rootfs/usr/lib/openssl-1.0.0/engines/
-	cp --preserve=xattr,timestamps tmp/usr/lib/*/openssl-1.0.0/engines/libcapi.so rootfs/usr/lib/openssl-1.0.0/engines/
-	cp --preserve=xattr,timestamps tmp/usr/lib/*/openssl-1.0.0/engines/libchil.so rootfs/usr/lib/openssl-1.0.0/engines/
-	cp --preserve=xattr,timestamps tmp/usr/lib/*/openssl-1.0.0/engines/libcswift.so rootfs/usr/lib/openssl-1.0.0/engines/
-	cp --preserve=xattr,timestamps tmp/usr/lib/*/openssl-1.0.0/engines/libgmp.so rootfs/usr/lib/openssl-1.0.0/engines/
-	cp --preserve=xattr,timestamps tmp/usr/lib/*/openssl-1.0.0/engines/libgost.so rootfs/usr/lib/openssl-1.0.0/engines/
-	cp --preserve=xattr,timestamps tmp/usr/lib/*/openssl-1.0.0/engines/libnuron.so rootfs/usr/lib/openssl-1.0.0/engines/
-	cp --preserve=xattr,timestamps tmp/usr/lib/*/openssl-1.0.0/engines/libpadlock.so rootfs/usr/lib/openssl-1.0.0/engines/
-	cp --preserve=xattr,timestamps tmp/usr/lib/*/openssl-1.0.0/engines/libsureware.so rootfs/usr/lib/openssl-1.0.0/engines/
-	cp --preserve=xattr,timestamps tmp/usr/lib/*/openssl-1.0.0/engines/libubsec.so rootfs/usr/lib/openssl-1.0.0/engines/
+	# libssl1.0.2 components
+	cp --preserve=xattr,timestamps tmp/usr/lib/*/libcrypto.so.1.0.2 rootfs/usr/lib/
+	cp --preserve=xattr,timestamps tmp/usr/lib/*/libssl.so.1.0.2 rootfs/usr/lib/
+	cp --preserve=xattr,timestamps tmp/usr/lib/*/openssl-1.0.2/engines/lib4758cca.so rootfs/usr/lib/openssl-1.0.2/engines/
+	cp --preserve=xattr,timestamps tmp/usr/lib/*/openssl-1.0.2/engines/libaep.so rootfs/usr/lib/openssl-1.0.2/engines/
+	cp --preserve=xattr,timestamps tmp/usr/lib/*/openssl-1.0.2/engines/libatalla.so rootfs/usr/lib/openssl-1.0.2/engines/
+	cp --preserve=xattr,timestamps tmp/usr/lib/*/openssl-1.0.2/engines/libcapi.so rootfs/usr/lib/openssl-1.0.2/engines/
+	cp --preserve=xattr,timestamps tmp/usr/lib/*/openssl-1.0.2/engines/libchil.so rootfs/usr/lib/openssl-1.0.2/engines/
+	cp --preserve=xattr,timestamps tmp/usr/lib/*/openssl-1.0.2/engines/libcswift.so rootfs/usr/lib/openssl-1.0.2/engines/
+	cp --preserve=xattr,timestamps tmp/usr/lib/*/openssl-1.0.2/engines/libgmp.so rootfs/usr/lib/openssl-1.0.2/engines/
+	cp --preserve=xattr,timestamps tmp/usr/lib/*/openssl-1.0.2/engines/libgost.so rootfs/usr/lib/openssl-1.0.2/engines/
+	cp --preserve=xattr,timestamps tmp/usr/lib/*/openssl-1.0.2/engines/libnuron.so rootfs/usr/lib/openssl-1.0.2/engines/
+	cp --preserve=xattr,timestamps tmp/usr/lib/*/openssl-1.0.2/engines/libpadlock.so rootfs/usr/lib/openssl-1.0.2/engines/
+	cp --preserve=xattr,timestamps tmp/usr/lib/*/openssl-1.0.2/engines/libsureware.so rootfs/usr/lib/openssl-1.0.2/engines/
+	cp --preserve=xattr,timestamps tmp/usr/lib/*/openssl-1.0.2/engines/libubsec.so rootfs/usr/lib/openssl-1.0.2/engines/
 
 	# libtinfo5 components
 	cp --preserve=xattr,timestamps tmp/lib/*/libtinfo.so.5.* rootfs/lib/libtinfo.so.5
@@ -669,10 +669,10 @@ mkdir -p bootfs/raspberrypi-ua-netinst
 mv raspberrypi-ua-netinst.cpio.gz bootfs/raspberrypi-ua-netinst/
 
 {
-	echo "[all]"
-	echo "initramfs raspberrypi-ua-netinst/raspberrypi-ua-netinst.cpio.gz"
 	echo "[pi3]"
 	echo "enable_uart=1"
+	echo "[all]"
+	echo "initramfs raspberrypi-ua-netinst/raspberrypi-ua-netinst.cpio.gz"
 } >> bootfs/config.txt
 
 echo "dwc_otg.lpm_enable=0 consoleblank=0 console=serial0,115200 console=tty1 elevator=deadline rootwait" > bootfs/cmdline.txt
